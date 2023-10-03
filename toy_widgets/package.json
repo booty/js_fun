@@ -1,5 +1,5 @@
 {
-  "name": "vue-walkthru",
+  "name": "toy_widgets",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -19,6 +19,8 @@
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
     "prettier": "^3.0.3",
+    "sass": "^1.68.0",
+    "sass-loader": "^13.3.2",
     "vite": "^4.4.9"
   }
 }

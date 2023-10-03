@@ -1,0 +1,21 @@
+$simple-gray-darker: #333;
+$simple-gray-dark-trans: #0007;
+$simple-gray-lighter: #f7f7f7;
+
+body {
+  color: $simple-gray-darker;
+  font-family: 'Literata', serif;
+}
+
+.simple-widget-box {
+  display: block;
+}
+
+.simple-widget {
+  background-color: $simple-gray-lighter;
+  border: 1px solid $simple-gray-dark-trans;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px 0 $simple-gray-dark-trans;
+  margin: 0 auto 2rem;
+  padding: .75em;
+}
