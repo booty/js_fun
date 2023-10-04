@@ -36,7 +36,6 @@ export default {
         const response = await axios.get('http://localhost:8000/headlines', {
           params: { url: selectedFeed.value }
         })
-        // const response = await axios.get(selectedFeed.value, { crossDomain: true, jsonp: false })
         headlines.value = response.data.headlines
         errorMessage.value = ''
       } catch (error) {
