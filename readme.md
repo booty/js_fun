@@ -15,13 +15,13 @@ asdf install
 Setup:
 
 ```bash
-cd frontend
+cd toy_widgets/frontend
+npm install
 ```
 
 Run:
 
 ```bash
-npm install
 npm run dev
 ```
 
@@ -30,7 +30,7 @@ npm run dev
 Setup:
 
 ```bash
-cd backend
+cd toy_widgets/backend
 source venv/bin/activate
 pip install -r requirements.txt
 ```
