@@ -3,6 +3,7 @@
 <script setup>
 import StaticTimeWidget from './components/StaticTimeWidget.vue'
 import DynamicTimeWidget from './components/DynamicTimeWidget.vue'
+import ListEditor from './components/ListEditor.vue'
 </script>
 
 <template>
@@ -12,4 +13,5 @@ import DynamicTimeWidget from './components/DynamicTimeWidget.vue'
   </div>
   <StaticTimeWidget />
   <DynamicTimeWidget />
+  <ListEditor />
 </template>
