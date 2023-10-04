@@ -4,6 +4,8 @@ Possibly the least useful app ever created.™
 
 ![Screenshot of the Vue Widgets app](https://github.com/booty/js_fun/assets/170685/94d74307-15a0-434e-9254-391def0c5826){width=300px}
 
+<img src="https://github.com/booty/js_fun/assets/170685/94d74307-15a0-434e-9254-391def0c5826" width="300">
+
 ## General Setup
 
 ```bash
