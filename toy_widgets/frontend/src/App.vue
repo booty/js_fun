@@ -4,6 +4,7 @@
 import StaticTimeWidget from './components/StaticTimeWidget.vue'
 import DynamicTimeWidget from './components/DynamicTimeWidget.vue'
 import ListEditor from './components/ListEditor.vue'
+import RssFrontEnd from './components/RssFrontEnd.vue'
 </script>
 
 <template>
@@ -14,4 +15,5 @@ import ListEditor from './components/ListEditor.vue'
   <StaticTimeWidget />
   <DynamicTimeWidget />
   <ListEditor />
+  <RssFrontEnd />
 </template>

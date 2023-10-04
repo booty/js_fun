@@ -36,6 +36,10 @@ pip install -r requirements.txt
 Run:
 
 ```bash
+# PRO MODE. WE DON'T NEED HOT RELOADING, WE ALREADY GOT IT RIGHT
+uvicorn main:app
+
+# Dev mode with hot reload
 uvicorn main:app --reload
 ```
 
