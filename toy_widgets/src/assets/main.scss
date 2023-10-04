@@ -1,21 +1,58 @@
-$simple-gray-darker: #333;
-$simple-gray-dark-trans: #0007;
-$simple-gray-lighter: #f7f7f7;
+$gray-darker: #333;
+$gray-dark: #666;
+$gray-dark-trans: #0007;
+$gray-lighter: #f7f7f7;
+
+// define scss named color variables similar to the Solarized Dark palette
+$base03: #002b36;
+$base02: #073642;
+$base01: #586e75;
+$base00: #657b83;
+$base0: #839496;
+$base1: #93a1a1;
+$base2: #eee8d5;
+$base3: #fdf6e3;
+$yellow: #b58900;
+$orange: #cb4b16;
+$red: #dc322f;
+$magenta: #d33682;
+$violet: #6c71c4;
+$blue: #268bd2;
+$cyan: #2aa198;
+$green: #859900;
+$white: #ffff;
+
+$widget-radius: .5em;
+$widget-vert-padding: .5em;
+$widget-horiz-padding: .65em;
+
 
 body {
-  color: $simple-gray-darker;
+  background-color: $base0;
+  color: $gray-darker;
   font-family: 'Literata', serif;
 }
 
-.simple-widget-box {
-  display: block;
+h1 {
+  margin: .25em 0;
 }
 
-.simple-widget {
-  background-color: $simple-gray-lighter;
-  border: 1px solid $simple-gray-dark-trans;
-  border-radius: 4px;
-  box-shadow: 2px 2px 4px 0 $simple-gray-dark-trans;
-  margin: 0 auto 2rem;
-  padding: .75em;
+.widget {
+  background-color: $gray-lighter;
+  border: 1px solid $gray-dark;
+  border-radius: $widget-radius;
+  box-shadow: 2px 2px $widget-radius 0 $gray-dark-trans;
+  display: block;
+  margin: 0 auto 1.25rem;
+  padding: $widget-vert-padding $widget-horiz-padding;
+
+  h3 {
+    background-color: $gray-darker;
+    border-radius: $widget-radius $widget-radius 0 0;
+    color: $white;
+    margin: (-($widget-vert-padding)) (-($widget-horiz-padding)) 0;
+    padding: 0 $widget-horiz-padding (
+      calc($widget-vert-padding / 2)
+    );
+}
 }

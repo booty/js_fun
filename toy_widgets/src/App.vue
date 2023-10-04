@@ -1,10 +1,15 @@
-<script setup></script>
+<!-- import StaticWidget -->
+
+<script setup>
+import StaticTimeWidget from './components/StaticTimeWidget.vue'
+import DynamicTimeWidget from './components/DynamicTimeWidget.vue'
+</script>
 
 <template>
-  <h1>Widgets</h1>
-  <div class="simple-widget-box simple-widget">
-    <p>Here's a little box for you.</p>
-    <p>We could put something here.</p>
+  <div class="widget-box widget">
+    <h1>Vue Widgets</h1>
+    <p>Let's have some fun!</p>
   </div>
+  <StaticTimeWidget />
+  <DynamicTimeWidget />
 </template>
-
