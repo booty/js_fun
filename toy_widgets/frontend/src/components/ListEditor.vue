@@ -1,9 +1,7 @@
 <template>
   <div class="widget">
     <h3>List Editor</h3>
-    <p>
-      <input v-model="newItem" @keyup.enter="addItem" />
-    </p>
+    <p>Add item: <input v-model="newItem" @keyup.enter="addItem" /></p>
     <ul>
       <li v-for="(item, index) in items" :key="index">
         {{ item }}
@@ -19,7 +17,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const newItem = ref('')
-    const items = ref([])
+    const items = ref(['Apples', 'Rutabegas', 'Zucchini'])
 
     const addItem = () => {
       if (newItem.value.trim() !== '') {
