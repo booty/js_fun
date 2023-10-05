@@ -22,10 +22,9 @@ $cyan: #2aa198;
 $green: #859900;
 $white: #ffff;
 
-$widget-radius: .5em;
-$widget-vert-padding: .5em;
-$widget-horiz-padding: .65em;
-
+$widget-radius: 0.5em;
+$widget-vert-padding: 0.5em;
+$widget-horiz-padding: 0.65em;
 
 body {
   background-color: $base0;
@@ -34,14 +33,14 @@ body {
 }
 
 h1 {
-  margin: .25em 0;
+  margin: 0.25em 0;
 }
 
 .widget {
   background-color: $gray-lighter;
   border: 1px solid $gray-dark;
-  border-radius: $widget-radius;
   box-shadow: 2px 2px $widget-radius 0 $gray-dark-trans;
+  border-radius: $widget-radius;
   display: block;
   margin: 0 auto 1.25rem;
   padding: $widget-vert-padding $widget-horiz-padding;
@@ -51,8 +50,6 @@ h1 {
     border-radius: $widget-radius $widget-radius 0 0;
     color: $white;
     margin: (-($widget-vert-padding)) (-($widget-horiz-padding)) 0;
-    padding: 0 $widget-horiz-padding (
-      calc($widget-vert-padding / 2)
-    );
-}
+    padding: 0 $widget-horiz-padding (calc($widget-vert-padding / 2));
+  }
 }
