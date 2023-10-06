@@ -2,10 +2,12 @@
   <div class="widget">
     <h3>Online Shopping</h3>
     <p>Recommendations, customized to your income level.</p>
-    <p>
+    <p class="recommendedItems">
       Recommended items:
-      <ul>
-        <li v-for="item in currentShoppingItems" :key="item">{{ item }}</li>
+      <ul >
+        <li v-for="item in currentShoppingItems" :key="item">
+          <img :src="`images/${item}`" :alt="item" />
+        </li>
       </ul>
     </p>
   </div>
@@ -46,11 +48,11 @@ const shoppingItemsByFinancialStatus = {
     'furcoat.jpg',
     'lobster.jpg',
     'chimay.jpg',
-    'diamondring.jpg',
+    'diamond-ring.jpg',
     'smartphone.jpg'
   ],
   filthy: [
-    'diamondring.jpg',
+    'diamond-ring.jpg',
     'yacht.jpg',
     'spaceship.jpg',
     'lobster.jpg',
@@ -84,3 +86,18 @@ onMounted(() => {
   updateShoppingRecs(userPreferencesStore.financialStatus)
 })
 </script>
+
+<style>
+  .recommendedItems ul {
+    display: flex;
+    list-style: none;
+    margin: 0px;
+  }
+  .recommendedItems img {
+    width: 150px;
+    height: 150px;
+    margin: 0.5em;
+    border: 1px #777 solid;
+    border-radius: 1em;
+  }
+</style>
