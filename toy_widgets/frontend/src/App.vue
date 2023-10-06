@@ -7,6 +7,7 @@ import ListEditor from './components/ListEditor.vue'
 import RssFrontEnd from './components/RssFrontEnd.vue'
 import ColorWidget from './components/ColorWidget.vue'
 import FinancialAdvisor from './components/FinancialAdvisor.vue'
+import OnlineStore from './components/OnlineStore.vue'
 </script>
 
 <template>
@@ -19,5 +20,6 @@ import FinancialAdvisor from './components/FinancialAdvisor.vue'
   <DynamicTimeWidget />
   <ListEditor />
   <RssFrontEnd />
-  <FinancialAdvisor startingIncome="5000" />
+  <FinancialAdvisor />
+  <OnlineStore />
 </template>
