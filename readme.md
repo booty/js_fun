@@ -2,7 +2,7 @@
 
 Possibly the least useful app ever created.™
 
-![vuewidgets-sm](https://github.com/booty/js_fun/assets/170685/94c20aef-fd70-4aff-b435-5ef80e0e469a)
+![vuewwidgets-v2](https://github.com/booty/js_fun/assets/170685/89a3a8db-76ed-4d69-b86b-372f5d6431b0)
 
 ## General Setup
 
