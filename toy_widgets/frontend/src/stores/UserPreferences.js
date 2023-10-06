@@ -1,39 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-/*
-export const useUserPreferencesStore = defineStore('userPreferences', {
-  state: () => {
-    console.log('💩 UserPreferences:state')
-    return {
-      count: 0,
-      financialStatus: 'middle'
-    }
-  },
-  actions: {
-    incrementCounter() {
-      this.count++
-    },
-    setFinancialStatus(financialStatus) {
-      const validFinancialStatuses = ['negative', 'low', 'middle', 'high', 'filthy']
-      if (validFinancialStatuses.includes(financialStatus)) {
-        this.financialStatus = financialStatus
-      } else {
-        throw new Error(
-          `Invalid financial status: ${financialStatus}. Should be one of: ${validFinancialStatuses}`
-        )
-      }
-    },
-    created() {
-      console.log('💩 UserPreferences store created')
-    }
-  },
-  init: () => {
-    console.log('💩 UserPreferences store initialized')
-  }
-})
-*/
-
 export const useUserPreferencesStore = defineStore('userPreferences', () => {
   const count = ref(0)
   const financialStatus = ref('middle')
@@ -52,7 +19,22 @@ export const useUserPreferencesStore = defineStore('userPreferences', () => {
     }
   }
 
-  function fetchPreferences() {
+  function fetchPreferences(force) {
+    console.log(logPrefix, 'fetchPreferences')
+
+    if ((!force && document.hidden) || !document.hasFocus()) {
+      // console.log(
+      //   logPrefix,
+      //   'fetchPreferences',
+      //   'Skipping fetchPreferences. document.hidden:',
+      //   document.hidden,
+      //   `document.hasFocus:`,
+      //   document.hasFocus()
+      // )
+      return
+    }
+
+    // TODO: exponential backoff, etc.
     try {
       const response = fetch('/userpreferences')
       if (response.ok) {
@@ -72,30 +54,19 @@ export const useUserPreferencesStore = defineStore('userPreferences', () => {
 
   function startPolling() {
     if (!this.intervalId) {
+      console.log(logPrefix, 'startPolling', 'Polling')
       this.intervalId = setInterval(() => {
-        console.log(logPrefix, 'startPolling', 'Polling')
-        fetchPreferences()
+        fetchPreferences(false)
       }, this.pollIntervalMs)
     } else {
       console.log(logPrefix, 'startPolling', 'Already polling')
     }
-  }
 
-  function stopPolling() {
-    if (this.intervalId) {
-      console.log(logPrefix, 'stopPolling', 'We are polling. Stopping.')
-      clearInterval(this.intervalId)
-      this.intervalId = null
-    } else {
-      console.log(logPrefix, 'stopPolling', 'Not polling')
-    }
+    fetchPreferences(true)
   }
 
   function initPolling() {
-    this.fetchPreferences()
     this.startPolling()
-    window.addEventListener('focus', this.startPolling)
-    window.addEventListener('blur', this.stopPolling)
   }
 
   return {
@@ -105,7 +76,6 @@ export const useUserPreferencesStore = defineStore('userPreferences', () => {
     incrementCounter,
     initPolling,
     startPolling,
-    stopPolling,
     intervalId,
     pollIntervalMs,
     fetchPreferences
