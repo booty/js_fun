@@ -7,7 +7,7 @@ import ListEditor from './components/ListEditor.vue'
 import RssFrontEnd from './components/RssFrontEnd.vue'
 import ColorWidget from './components/ColorWidget.vue'
 import FinancialAdvisor from './components/FinancialAdvisor.vue'
-// import OnlineStore from './components/OnlineStore.vue'
+import OnlineStore from './components/OnlineStore.vue'
 </script>
 
 <template>
@@ -15,11 +15,11 @@ import FinancialAdvisor from './components/FinancialAdvisor.vue'
     <h1>Vue Widgets</h1>
     <p>Let's have some fun!</p>
   </div>
+  <FinancialAdvisor />
+  <OnlineStore />
+  <ListEditor />
+  <RssFrontEnd />
   <ColorWidget />
   <StaticTimeWidget />
   <DynamicTimeWidget />
-  <ListEditor />
-  <RssFrontEnd />
-  <FinancialAdvisor />
-  <!-- <OnlineStore /> -->
 </template>
