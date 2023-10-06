@@ -14,7 +14,6 @@
 
 <script>
 import { ref } from 'vue'
-import { useWidgetStore } from '../stores/widgetStore'
 
 // const store = useStore('widgetStore')
 console.log('Hi from ColorWidget.vue!')
@@ -23,14 +22,13 @@ export default {
   setup() {
     console.log('Hi from ColorWidget.vue setup()!')
     const colors = ref(['#ff0000', '#00ff00', '#0000ff'])
-    const store = useWidgetStore()
 
     const updateColor = (color) => {
-      store.currentBgColor = color
+      // store.currentBgColor = color
     }
 
     return {
-      store,
+      // store,
       colors,
       updateColor
     }

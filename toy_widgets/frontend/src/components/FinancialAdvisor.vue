@@ -1,7 +1,10 @@
 <template>
   <div class="widget">
     <h3>Financial Advisor</h3>
-    <p>Your Annual Income ($USD): <input v-model="income" @keyup.enter="updateIncome" /></p>
+    <p>
+      Your Annual Income ($USD):
+      <input v-model="income" @keyup="updateMyIncome(income)" @change="updateMyIncome(income)" />
+    </p>
     <p>
       <b>Financial Advice:</b>
       <span class="financialAdvice" :class="financialStatus">
@@ -13,8 +16,10 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue'
+import { useUserPreferencesStore } from '../stores/UserPreferences'
 
 const income = ref(5000)
+const userPreferences = useUserPreferencesStore()
 
 const financialAdvice = {
   negative: 'How is that even possible?',
@@ -33,8 +38,14 @@ const financialStatus = computed(() => {
   return 'filthy'
 })
 
+const updateMyIncome = (newIncome) => {
+  console.log('New income:', newIncome)
+  userPreferences.setFinancialStatus(financialStatus.value)
+}
+
 onMounted(() => {
   console.log('FinancialAdvisor mounted. Income:', income.value)
+  updateMyIncome(income.value)
 })
 </script>
 
