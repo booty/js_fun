@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, computed, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useUserPreferencesStore } from '../stores/UserPreferences'
 
 const userPreferencesStore = useUserPreferencesStore()
@@ -68,14 +68,19 @@ function shuffle(array) {
     return array;
 }
 
+function updateShoppingRecs(financialStatus) {
+  let recs = shoppingItemsByFinancialStatus[financialStatus]
+  currentShoppingItems.value = shuffle(recs).slice(0, 3)
+  console.log('[OnlineStore|updateShoppingRecs] Current shopping items:', currentShoppingItems.value)
+}
 
 watch(() => userPreferencesStore.financialStatus, (newValue) => {
-  console.log('Financial status changed to:', newValue)
-  // currentShoppingItems.value = shoppingItemsByFinancialStatus[newValue]
-  let recs = shoppingItemsByFinancialStatus[newValue]
-  currentShoppingItems.value = shuffle(recs).slice(0, 3)
-  console.log('Current shopping items:', currentShoppingItems.value)
+  console.log('[OnlineStore|watch] Financial status changed to:', newValue)
+  updateShoppingRecs(newValue)
 })
 
-// todo: onmounted
+onMounted(() => {
+  console.log('[OnlineStore|onMounted] Financial status:', userPreferencesStore.financialStatus)
+  updateShoppingRecs(userPreferencesStore.financialStatus)
+})
 </script>
