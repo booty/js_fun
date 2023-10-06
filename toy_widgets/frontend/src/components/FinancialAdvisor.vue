@@ -32,7 +32,7 @@ const financialAdvice = {
 
 const financialStatus = computed(() => {
   if (income.value < 0) return 'negative'
-  if (income.value < 1000) return 'low'
+  if (income.value < 10000) return 'low'
   if (income.value < 100000) return 'middle'
   if (income.value < 1000000) return 'high'
   return 'filthy'

@@ -73,7 +73,6 @@ function shuffle(array) {
 function updateShoppingRecs(financialStatus) {
   let recs = shoppingItemsByFinancialStatus[financialStatus]
   currentShoppingItems.value = shuffle(recs).slice(0, 3)
-  console.log('[OnlineStore|updateShoppingRecs] Current shopping items:', currentShoppingItems.value)
 }
 
 watch(() => userPreferencesStore.financialStatus, (newValue) => {
@@ -82,7 +81,6 @@ watch(() => userPreferencesStore.financialStatus, (newValue) => {
 })
 
 onMounted(() => {
-  console.log('[OnlineStore|onMounted] Financial status:', userPreferencesStore.financialStatus)
   updateShoppingRecs(userPreferencesStore.financialStatus)
 })
 </script>
