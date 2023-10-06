@@ -8,44 +8,53 @@
     <p>
       <b>Financial Advice:</b>
       <span class="financialAdvice" :class="financialStatus">
-        {{ financialAdvice[financialStatus] }}
+        "{{ financialAdvice[financialStatus] }}"
       </span>
     </p>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref, computed, watch } from 'vue'
 import { useUserPreferencesStore } from '../stores/UserPreferences'
 
-const income = ref(5000)
-const userPreferences = useUserPreferencesStore()
+const income = ref(null)
+const userPreferencesStore = useUserPreferencesStore()
 
 const financialAdvice = {
   negative: 'How is that even possible?',
-  low: "You are poor. But that's okay! Money is dumb.",
+  low: "You don't have a lot of money. But that's okay! Money is dumb. Love is what really matters.",
   middle: 'You are middle class. That is cool. Good work.',
-  high: 'You are rich. Make sure to share!',
+  high: 'You are rich. Make sure to share.',
   filthy:
-    "I think you should financially advise me, not the other way 'round. What could I possibly teach you?"
+    'I think you should financially advise me, not the other way around. What could I possibly teach you?'
 }
 
 const financialStatus = computed(() => {
-  if (income.value < 0) return 'negative'
-  if (income.value < 10000) return 'low'
-  if (income.value < 100000) return 'middle'
-  if (income.value < 1000000) return 'high'
-  return 'filthy'
+  return userPreferencesStore.financialStatus
 })
 
 const updateMyIncome = (newIncome) => {
   console.log('New income:', newIncome)
-  userPreferences.setFinancialStatus(financialStatus.value)
+  // userPreferences.setFinancialStatus(financialStatus.value)
+  // return if newIncome is null
+  if (newIncome === null) {
+    return
+  }
+  userPreferencesStore.setIncome(newIncome)
 }
 
+watch(
+  () => userPreferencesStore.income,
+  (newValue) => {
+    console.log('[FinancialAdvisor|watch] Income changed to:', newValue)
+    income.value = newValue
+  }
+)
+
 onMounted(() => {
+  income.value = userPreferencesStore.income
   console.log('FinancialAdvisor mounted. Income:', income.value)
-  updateMyIncome(income.value)
 })
 </script>
 
